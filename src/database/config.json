@@ -1,0 +1,28 @@
+{
+  "dev": {
+    "host": "localhost",
+    "port": 5432,
+    "username": "chat_test",
+    "password": "sadfqewgfg34ceqdx357sa2",
+    "database": "chat_testDB",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_seeds_data",
+    "migrationStorage": "sequelize",
+    "migrationStorageTableName": "sequelize_migrations_data",
+    "logging": "console"
+  },
+  "docker": {
+    "host": "postgres",
+    "port": 5432,
+    "username": "chat_test",
+    "password": "sadfqewgfg34ceqdx357sa2",
+    "database": "chat_testDB",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_seeds_data",
+    "migrationStorage": "sequelize",
+    "migrationStorageTableName": "sequelize_migrations_data",
+    "logging": "console"
+  }
+}
