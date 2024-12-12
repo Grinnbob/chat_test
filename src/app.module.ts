@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
-import { MessageModule } from './messages/message.module';
+import { MessageModule } from './chat/chat.module';
 import { SocketModule } from './socket/socket.module';
 import * as dbConfig from './database/config.json';
-import { Message } from './messages/message.model';
-import { Room } from './messages/room.model';
-import { UserRoom } from './messages/user-room.model';
 import { User } from './users/users.model';
+import { Message } from './chat/models/message.model';
+import { Room } from './chat/models/room.model';
+import { UserRoom } from './chat/models/user-room.model';
 
 @Module({
   imports: [

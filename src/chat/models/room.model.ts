@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
 import {
   BelongsTo,
   BelongsToMany,
@@ -6,7 +5,6 @@ import {
   DataType,
   ForeignKey,
   HasMany,
-  HasOne,
   Index,
   Model,
   Table,
@@ -14,18 +12,14 @@ import {
 import { User } from 'src/users/users.model';
 import { UserRoom } from './user-room.model';
 import { Message } from './message.model';
-import { Hire } from 'src/vacancy/hire.model';
 
 interface RoomCreateAttrs {
-  hireId: number;
   hostId: number; // host userId
   name?: string;
-  calendarEventId?: number;
 }
 
 @Table({ tableName: 'rooms' })
 export class Room extends Model<Room, RoomCreateAttrs> {
-  @ApiProperty({ example: 1, description: 'Unique ID' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -34,7 +28,6 @@ export class Room extends Model<Room, RoomCreateAttrs> {
   })
   id: number;
 
-  @ApiProperty({ example: 'chat-123', description: 'Room name' })
   @Column({
     type: DataType.STRING,
     unique: false,
@@ -58,11 +51,4 @@ export class Room extends Model<Room, RoomCreateAttrs> {
 
   @HasMany(() => Message)
   messages: Message[];
-
-  @ForeignKey(() => Hire)
-  @Column({ type: DataType.INTEGER })
-  hireId?: number;
-
-  @HasOne(() => Hire, 'roomId')
-  hire?: Hire;
 }

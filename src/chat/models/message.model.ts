@@ -15,22 +15,7 @@ interface MessageCreateAttrs {
   userId: number;
   roomId: number;
   text?: string;
-  documentName?: string;
-  imageName?: string;
 }
-
-export enum DisplayType {
-  pick_meeting_date = 'pick_meeting_date',
-}
-
-export type PickDateDisplay = {
-  type: DisplayType.pick_meeting_date;
-  payload: {
-    scheduleId: number;
-  };
-};
-
-export type MessageDisplay = PickDateDisplay;
 
 @Table({ tableName: 'messages' })
 export class Message extends Model<Message, MessageCreateAttrs> {
@@ -50,36 +35,6 @@ export class Message extends Model<Message, MessageCreateAttrs> {
     allowNull: true,
   })
   text: string;
-
-  @ApiProperty({
-    example: [{ type: 'text', value: 'test' }],
-    description: 'Message json',
-  })
-  @Column({
-    type: DataType.JSONB,
-    allowNull: true,
-  })
-  display: Array<MessageDisplay>;
-
-  @ApiProperty({
-    example: 'folder_id_uuid.ext',
-    description: 'Image name',
-  })
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
-  imageName?: string;
-
-  @ApiProperty({
-    example: 'folder_id_uuid.ext',
-    description: 'Image name',
-  })
-  @Column({
-    type: DataType.STRING,
-    allowNull: true,
-  })
-  documentName?: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

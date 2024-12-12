@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
-import { SocketService } from './socket.service';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Message } from 'src/messages/message.model';
-import { MessageService } from 'src/messages/message.service';
 import { UsersService } from 'src/users/users.service';
-import { Room } from 'src/messages/room.model';
 import { User } from 'src/users/users.model';
-import { UserRoom } from 'src/messages/user-room.model';
 import { SocketGateway } from './socket.gateway';
+import { ChatService } from 'src/chat/chat.service';
+import { Message } from 'src/chat/models/message.model';
+import { Room } from 'src/chat/models/room.model';
+import { UserRoom } from 'src/chat/models/user-room.model';
 
 @Module({
-  providers: [SocketService, SocketGateway, MessageService, UsersService],
+  providers: [SocketGateway, ChatService, UsersService],
   imports: [SequelizeModule.forFeature([Message, Room, User, UserRoom])],
-  exports: [SocketService, SocketGateway],
+  exports: [SocketGateway],
 })
 export class SocketModule {}

@@ -1,5 +1,5 @@
-import { Message } from 'src/messages/message.model';
-import { Room } from 'src/messages/room.model';
+import { Message } from 'src/chat/models/message.model';
+import { Room } from 'src/chat/models/room.model';
 
 export const isRoom = (obj: Room | Message): obj is Room => {
   return !('text' in obj);
